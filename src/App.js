@@ -8,11 +8,11 @@ import Header from './components/header/header.component';
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import  { auth } from './firebase/firebase.utils';
 
-class App extends React.Component() {
+class App extends React.Component {
   constructor() {
-    super(props);
+    super();
     this.state = {
-      currentUser: null;
+      currentUser: null
     }
   }
 
@@ -24,14 +24,14 @@ class App extends React.Component() {
     })
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
 
   render() { 
     return (
       <div>
-        <Header />
+        <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/shop' component={ShopPage} />
